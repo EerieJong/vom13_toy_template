@@ -7,7 +7,7 @@ $('.grid').masonry({
 });
 
 let items = [];
-$.getJSON('../products.json', function(data){
+$.getJSON('https://www.dabipyeung.com/soaply_backend/model/get_products.php?qnt=9', function(data){
   // console.log(data);
   $.each(data, function(i, item){
     // console.log(item);

@@ -50,3 +50,36 @@ fitHeight();
 //   $('#fh').height(originalHeight);
 //   // console.log(originalHeight);
 // });
+
+$(document).ajaxComplete(function(){
+  const productWidth = $('.product-item').width();
+  $('.product-item img').height(productWidth);
+// console.log(productWidth);
+
+  const ptexts = $('.product-text p');
+
+  ptexts.each(function (i, item) {
+    // console.log($(item).text().length);
+    const tlength = $(item).text();
+    function shortenText() {
+      const w = $(window).width();
+      let sliceLength;
+
+
+      if (w < 900) {
+        sliceLength = tlength.slice(0, 60) + '...';
+        $(item).text(sliceLength);
+      } else if (w > 901) {
+        sliceLength = tlength.slice(0, 200);
+        $(item).text(sliceLength);
+      }
+    }
+    shortenText();
+
+
+    $(window).on('resize', function () {
+      shortenText();
+    });
+  });
+
+});
